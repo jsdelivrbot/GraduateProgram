@@ -1,0 +1,12 @@
+/client/mobileApp/node_modules/
+/client/mobileApp/npm-debug.log*
+
+/server/node_modules/
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
