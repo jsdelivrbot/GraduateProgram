@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import TabNav from './TabNav';
-import { Icon } from 'native-base';
 
-export default class MainScreen extends Component {
+export default class DayScreen extends Component {
     static navigationOptions = {
-        title: "Meet Mindera",
-        headerLeft: <Icon name={search}/>,
-        //headerRight: <Icon name={search}/>
+        title: "Open Day"
     };
+
+    constructor(){
+        super();
+    }
 
     render(){
         return (
-            <TabNav/>
+            <View>
+                <Text>
+                    Day
+                </Text>
+            </View>
         )
     }
 }

@@ -1,12 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import MainScreen from './MainScreen';
+import HomeScreen from './HomeScreen';
+import ListScreen from './ListScreen';
+import DayScreen from './DayScreen';
 
-const StackNav = StackNavigator ({
-    Main: {
-        screen: MainScreen
-    }
-});
+const StackNav = StackNavigator (
+    {
+        Home: {
+            screen: HomeScreen
+        },
+        List: {
+            screen: ListScreen
+        },
+        Day: {
+            screen: DayScreen
+        }
+        },
+    {
+        initialRouteName: 'Home'
+    });
 
 export default StackNav;

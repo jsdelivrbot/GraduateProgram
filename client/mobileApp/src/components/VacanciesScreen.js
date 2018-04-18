@@ -1,12 +1,31 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 export default class VacanciesScreen extends Component {
+
+    constructor(){
+        super();
+    }
+
     render() {
         return (
-            <View>
-                <Text>Vacancies</Text>
+            <View style={styles.container}>
+                <Text style={styles.mainText}>Vacancies</Text>
             </View>
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+    },
+    mainText: {
+        fontSize: 20,
+        textAlign: 'center',
+        margin: 10,
+    }
+});

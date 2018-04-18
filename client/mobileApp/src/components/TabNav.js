@@ -10,6 +10,17 @@ const TabNav = TabNavigator({
     Vacancies: {
         screen: VacanciesScreen
     }
+}, {
+    animationEnabled: true,
+    swipeEnabled: true,
+    tabBarOptions: {
+        style: {
+            backgroundColor: '#788691'
+        },
+        indicatorStyle: {
+            backgroundColor: 'white'
+        },
+    }
 });
 
 export default TabNav;
