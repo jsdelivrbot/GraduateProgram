@@ -1,7 +1,7 @@
 /client/mobileApp/node_modules/
 /client/mobileApp/npm-debug.log*
 
-/server/node_modules/
+/api/node_modules/
 
 # Editor directories and files
 .idea

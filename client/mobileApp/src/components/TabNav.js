@@ -1,17 +1,17 @@
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
 import { TabNavigator } from 'react-navigation';
-import EventsScreen from "./EventsScreen";
-import VacanciesScreen from "./VacanciesScreen";
-import { ScrollView, FlatList, View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import EventsTab from "./EventsTab";
+import VacanciesTab from "./VacanciesTab";
 import Icons from 'react-native-vector-icons/Ionicons';
 
 const TabNav = TabNavigator({
     Events: {
-        screen: EventsScreen
+        screen: EventsTab
 
     },
     Vacancies: {
-        screen: VacanciesScreen
+        screen: VacanciesTab
     }
 }, {
     animationEnabled: true,

@@ -3,45 +3,16 @@ import { FlatList, View, Image, Text, StyleSheet, TouchableOpacity, ImageBackgro
 
 export default class EventCardList extends Component {
 
-    constructor(props){
-        super(props);
-        this.state = {
-            data: [],
-            loading: true,
-            error: null
-        }
-    }
-
-    /* TODO - ALTERA URL */
-    componentDidMount(){
-        return fetch('' + this.props.id)
-            .then((res) => res.json())
-            .then((res) => {
-                this.setState({
-                    loading: false,
-                    data: res,
-                }, function(){
-                });
-            })
-            .catch((error) =>{
-                this.setState({
-                    loading: false
-                });
-
-                console.log(error);
-            });
-    }
-
     _renderItem = ({item}) => (
         <TouchableOpacity style={styles.card}
             onPress={() => {
                 this.props.navigation.navigate('Day', {
-                    id: item.id,
+                    id: item._id,
                     title: this.props.name+'_'+item.name
                 });
             }}
         >
-            <ImageBackground style={styles.cardBackground} source={{uri: item.cover_img }}>
+            <ImageBackground style={styles.cardBackground} source={{uri: item.image}}>
                 <View style={styles.cardFooter}>
                     <Text style={styles.textFooter}>{item.name}</Text>
                 </View>
@@ -49,7 +20,7 @@ export default class EventCardList extends Component {
         </TouchableOpacity>
     );
 
-    _keyExtractor = (item) => item.id;
+    _keyExtractor = (item) => item._id;
 
     render() {
         return (
@@ -57,7 +28,7 @@ export default class EventCardList extends Component {
                 <FlatList
                     horizontal={true}
                     showsHorizontalScrollIndicator={false}
-                    data={this.state.data}
+                    data={this.props.days}
                     renderItem={this._renderItem}
                     keyExtractor={this._keyExtractor}
                 />
@@ -93,7 +64,8 @@ const styles = StyleSheet.create({
     },
     textFooter: {
         color: 'white',
-        fontSize: 15
+        fontSize: 15,
+        textAlign: 'center'
     }
 });
 

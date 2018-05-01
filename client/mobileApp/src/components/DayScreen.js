@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, View, Image, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import { FlatList, View, StyleSheet, TouchableOpacity, ActivityIndicator} from 'react-native';
 import { ListItem } from 'react-native-elements';
 
 export default class DayScreen extends Component {
@@ -19,8 +19,8 @@ export default class DayScreen extends Component {
         }
     };
 
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
 
         this.state = {
             data: [],
@@ -29,12 +29,15 @@ export default class DayScreen extends Component {
         }
     }
 
-    /* TODO - ALTERA URL */
     componentDidMount(){
         const { params } = this.props.navigation.state;
         const id = params ? params.id : null;
 
-        return fetch('' + id)
+        this.setState({
+            loading: true
+        });
+
+        return fetch('https://graduates-mindera.herokuapp.com/day/' + id)
             .then((res) => res.json())
             .then((res) => {
                 this.setState({
@@ -55,12 +58,11 @@ export default class DayScreen extends Component {
     _renderItem = ({item}) => (
         <TouchableOpacity
             onPress={() => {
-                this.props.navigation.navigate('List', {
-                    id: item.id,
+                this.props.navigation.navigate('Gallery', {
+                    id: item._id,
                     title: item.name
                 });
             }}
-
         >
             <ListItem
                 title={item.name}
@@ -69,11 +71,12 @@ export default class DayScreen extends Component {
         </TouchableOpacity>
     );
 
-    _keyExtractor = (item) => item.id;
+    _keyExtractor = (item) => item._id;
 
     render() {
         return (
             <View>
+                {this.state.loading && <View style={styles.indicator}><ActivityIndicator size="large" /></View>}
                 <FlatList
                     data={this.state.data}
                     renderItem={this._renderItem}
@@ -83,3 +86,11 @@ export default class DayScreen extends Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    indicator: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+});

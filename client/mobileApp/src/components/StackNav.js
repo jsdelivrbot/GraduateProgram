@@ -1,18 +1,16 @@
 import React from 'react';
 import { StackNavigator } from 'react-navigation';
-import { ScrollView, FlatList, View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import ListScreen from './ListScreen';
+import GalleryScreen from './GalleryScreen';
 import DayScreen from './DayScreen';
 import TabNav from './TabNav';
-import Icons from 'react-native-vector-icons/Ionicons';
 
 const StackNav = StackNavigator (
     {
         Home: {
-            screen: TabNav,
+            screen: TabNav
         },
-        List: {
-            screen: ListScreen
+        Gallery: {
+            screen: GalleryScreen
         },
         Day: {
             screen: DayScreen
