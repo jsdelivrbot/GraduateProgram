@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { ScrollView, FlatList, View, Image, Text, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { ScrollView, FlatList, View, Image, Text, StyleSheet,  ActivityIndicator, StatusBar } from 'react-native';
 import EventCardList from './EventCardList';
 
+/* Events Tab */
 export default class EventsTab extends Component {
     static navigationOptions = {
         tabBarLabel: 'Events'
@@ -51,6 +52,10 @@ export default class EventsTab extends Component {
     render() {
         return (
             <ScrollView style={styles.wrapper}>
+                <StatusBar
+                    backgroundColor="#01308d"
+                    barStyle="light-content"
+                />
                 <Image
                     source={require('../static/img/banner.png')}
                     style={styles.banner}
@@ -72,7 +77,8 @@ const styles = StyleSheet.create({
         width:'100%'
     },
     wrapper: {
-        flex: 1
+        flex: 1,
+        marginBottom: 20
     },
     event: {
         color: '#494949',

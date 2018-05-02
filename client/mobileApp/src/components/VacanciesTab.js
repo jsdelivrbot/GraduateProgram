@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
+/* Vacancies Tab */
 export default class VacanciesTab extends Component {
     static navigationOptions = {
         tabBarLabel: 'Vacancies'

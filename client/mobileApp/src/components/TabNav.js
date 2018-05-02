@@ -5,6 +5,7 @@ import EventsTab from "./EventsTab";
 import VacanciesTab from "./VacanciesTab";
 import Icons from 'react-native-vector-icons/Ionicons';
 
+/* Main navigation Tabs */
 const TabNav = TabNavigator({
     Events: {
         screen: EventsTab
@@ -19,8 +20,10 @@ const TabNav = TabNavigator({
     tabBarOptions: {
         upperCaseLabel: false,
         style: {
-            backgroundColor: '#788691'
+            backgroundColor: '#0145CD'
         },
+        activeTintColor: "white",
+        inactiveTintColor: "white",
         indicatorStyle: {
             backgroundColor: 'white'
         }
@@ -28,10 +31,10 @@ const TabNav = TabNavigator({
     navigationOptions: {
         title: "Meet Mindera",
         headerStyle: {
-            backgroundColor: '#788691',
+            backgroundColor: '#0145CD',
             elevation: 0, // Removes bottom shadow of the nav bar
             borderBottomWidth: 1,
-            borderBottomColor: '#67758b',
+            borderBottomColor: '#01308d',
         },
         headerTitleStyle: {
             color: '#ffffff'

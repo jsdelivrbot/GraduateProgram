@@ -4,16 +4,17 @@ import GalleryScreen from './GalleryScreen';
 import DayScreen from './DayScreen';
 import TabNav from './TabNav';
 
+/* Main navigation screens */
 const StackNav = StackNavigator (
     {
         Home: {
             screen: TabNav
         },
-        Gallery: {
-            screen: GalleryScreen
-        },
         Day: {
             screen: DayScreen
+        },
+        Gallery: {
+            screen: GalleryScreen
         }
         },
     {

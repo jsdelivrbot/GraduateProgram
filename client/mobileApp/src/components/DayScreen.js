@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { FlatList, View, StyleSheet, TouchableOpacity, ActivityIndicator} from 'react-native';
-import { ListItem } from 'react-native-elements';
+import { ListItem, Divider } from 'react-native-elements';
 
+/* Screen presenting the photos galleries of a day from a selected event */
 export default class DayScreen extends Component {
 
     static navigationOptions = ({ navigation }) => {
@@ -10,10 +11,7 @@ export default class DayScreen extends Component {
         return {
             title: params.title,
             headerStyle: {
-                backgroundColor: '#788691',
-                elevation: 0, // Removes bottom shadow of the nav bar
-                borderBottomWidth: 1,
-                borderBottomColor: '#67758b',
+                backgroundColor: '#0145CD'
             },
             headerTintColor: 'white'
         }
@@ -67,7 +65,9 @@ export default class DayScreen extends Component {
             <ListItem
                 title={item.name}
                 rightIcon={{ style: { opacity: 0 } }}
+                containerStyle={{ borderBottomWidth: 0 }}
             />
+            <Divider style={{ backgroundColor: '#C0C0C0', marginLeft:20, marginRight:20}} />
         </TouchableOpacity>
     );
 

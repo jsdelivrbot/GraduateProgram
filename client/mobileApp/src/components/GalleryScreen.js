@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
-import { FlatList, View, Image, Text, StyleSheet, TouchableOpacity, Dimensions} from 'react-native';
+import {FlatList, View, Image, Text, Dimensions, ActivityIndicator, StyleSheet} from 'react-native';
 
+/* Screen where the Gallery with photos is presented */
 export default class GalleryScreen extends Component {
 
-    static navigationOptions = ({ navigation }) => {
-        const { params } = navigation.state;
+    static navigationOptions = ({navigation}) => {
+        const {params} = navigation.state;
 
         return {
             title: params.title,
             headerStyle: {
-                backgroundColor: '#788691',
-                elevation: 0, // Removes bottom shadow of the nav bar
-                borderBottomWidth: 1,
-                borderBottomColor: '#67758b',
+                backgroundColor: '#0145CD'
             },
             headerTintColor: 'white'
         }
     };
 
-    constructor(){
+    constructor() {
         super();
 
         this.state = {
@@ -29,9 +27,13 @@ export default class GalleryScreen extends Component {
         }
     }
 
-    componentDidMount(){
-        const { params } = this.props.navigation.state;
+    componentDidMount() {
+        const {params} = this.props.navigation.state;
         const id = params ? params.id : null;
+
+        this.setState({
+            loading: true
+        });
 
         return fetch('https://graduates-mindera.herokuapp.com/gallery/' + id)
             .then((res) => res.json())
@@ -39,10 +41,10 @@ export default class GalleryScreen extends Component {
                 this.setState({
                     loading: false,
                     data: res,
-                }, function(){
+                }, function () {
                 });
             })
-            .catch((error) =>{
+            .catch((error) => {
                 this.setState({
                     loading: false
                 });
@@ -54,8 +56,8 @@ export default class GalleryScreen extends Component {
     _renderItem = ({item}) => (
         <View style={{margin: 10}}>
             <Image
-                style={{width: Dimensions.get('window').width/2 - 30, height: 170, marginBottom: 4}}
-                source={{uri: item.image }}
+                style={{width: Dimensions.get('window').width / 2 - 30, height: 170, marginBottom: 4}}
+                source={{uri: item.image}}
             />
             <Text>{item.description}</Text>
         </View>
@@ -65,9 +67,10 @@ export default class GalleryScreen extends Component {
 
     render() {
         return (
-            <View>
+            <View style={{marginBottom: 20}}>
+                {this.state.loading && <View style={styles.indicator}><ActivityIndicator size="large" /></View>}
                 <FlatList
-                    style={{ padding: 10 }}
+                    style={{padding: 10}}
                     numColumns={this.state.columns}
                     data={this.state.data}
                     renderItem={this._renderItem}
@@ -77,3 +80,11 @@ export default class GalleryScreen extends Component {
         )
     }
 }
+
+const styles = StyleSheet.create({
+    indicator: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+});

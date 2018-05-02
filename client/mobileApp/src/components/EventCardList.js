@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { FlatList, View, Image, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
+import { FlatList, View, Text, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 
+/* Horizontal list presenting each day of an event */
 export default class EventCardList extends Component {
 
     _renderItem = ({item}) => (
