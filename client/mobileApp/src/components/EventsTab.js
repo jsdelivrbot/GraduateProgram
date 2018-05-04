@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
-import { ScrollView, FlatList, View, Image, Text, StyleSheet,  ActivityIndicator, StatusBar } from 'react-native';
+import { ScrollView, FlatList, View, Image, Text, StyleSheet,  ActivityIndicator, StatusBar, TouchableOpacity, Button } from 'react-native';
 import EventCardList from './EventCardList';
+import Icons from 'react-native-vector-icons/Ionicons';
+import axios from 'axios';
+import {connect} from 'react-redux';
+import {fetchEvents} from '../actions/actions'
 
 /* Events Tab */
-export default class EventsTab extends Component {
-    static navigationOptions = {
-        tabBarLabel: 'Events'
+class EventsTab extends Component {
+        static navigationOptions = {
+        tabBarLabel: 'Events',
+            headerLeft: (
+                <TouchableOpacity style={{paddingLeft:20}} onPress={() => this.props.navigation.navigate('DrawerOpen')}>
+                    <Icons name="md-menu" size={30} color="#ffff" />
+                </TouchableOpacity>
+            ),
+            headerRight: (
+                <TouchableOpacity style={{paddingRight:20}} onPress={() => alert('search something')}>
+                    <Icons name="md-search" size={30} color="#ffff" />
+                </TouchableOpacity>
+            ),
     };
 
-    constructor(){
+    /*constructor(){
         super();
         this.state = {
             data: [],
@@ -22,11 +36,10 @@ export default class EventsTab extends Component {
             loading: true
         });
 
-        return fetch('https://graduates-mindera.herokuapp.com/events')
-            .then((res) => res.json())
+        axios.get('https://graduates-mindera.herokuapp.com/events')
             .then((res) => {
                 this.setState({
-                    data: res,
+                    data: res.data,
                     loading: false
                 }, function(){
                 });
@@ -38,6 +51,10 @@ export default class EventsTab extends Component {
 
                 console.log(error);
             });
+    }*/
+
+    componentDidMount(){
+        this.props.fetchEvents();
     }
 
     _renderItem = ({item}) => (
@@ -93,3 +110,5 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     }
 });
+
+export default connect(null, {fetchEvents})(EventsTab);

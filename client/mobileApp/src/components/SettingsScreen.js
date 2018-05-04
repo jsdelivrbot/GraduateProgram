@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-/* About Screen */
-export default class AboutScreen extends Component {
+/* Settings Screen */
+export default class SettingsScreen extends Component {
     static navigationOptions = {
-        title: "About",
+        title: "Settings"
     };
 
     constructor(){
@@ -14,7 +14,7 @@ export default class AboutScreen extends Component {
     render(){
         return (
             <View style={styles.container}>
-                <Text>This is about screen</Text>
+                <Text>This is settings screen</Text>
             </View>
         )
     }

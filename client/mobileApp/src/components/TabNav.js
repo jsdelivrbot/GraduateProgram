@@ -38,9 +38,9 @@ const TabNav = TabNavigator({
         },
         headerTitleStyle: {
             color: '#ffffff'
-        },
-        headerLeft: (
-            <TouchableOpacity style={{paddingLeft:20}} onPress={() => alert('search something')}>
+        }
+        /*headerLeft: (
+            <TouchableOpacity style={{paddingLeft:20}} onPress={() => this.props.navigation.navigate('DrawerOpen')}>
                 <Icons name="md-menu" size={30} color="#ffff" />
             </TouchableOpacity>
         ),
@@ -48,7 +48,7 @@ const TabNav = TabNavigator({
             <TouchableOpacity style={{paddingRight:20}} onPress={() => alert('search something')}>
                 <Icons name="md-search" size={30} color="#ffff" />
             </TouchableOpacity>
-        )
+        )*/
     }
 });
 

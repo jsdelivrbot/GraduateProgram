@@ -42,12 +42,11 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         height: 175,
-        paddingLeft:10,
-        paddingRight: 10
+        paddingLeft:20,
+        paddingRight: 20
     },
     card: {
-        marginLeft:10,
-        marginRight:10
+        marginRight:15
     },
     cardBackground: {
         width: 140,

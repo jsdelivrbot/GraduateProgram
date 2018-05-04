@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {FlatList, View, Image, Text, Dimensions, ActivityIndicator, StyleSheet} from 'react-native';
+import axios from 'axios';
 
 /* Screen where the Gallery with photos is presented */
 export default class GalleryScreen extends Component {
@@ -35,12 +36,11 @@ export default class GalleryScreen extends Component {
             loading: true
         });
 
-        return fetch('https://graduates-mindera.herokuapp.com/gallery/' + id)
-            .then((res) => res.json())
+        axios.get('https://graduates-mindera.herokuapp.com/gallery/' + id)
             .then((res) => {
                 this.setState({
-                    loading: false,
-                    data: res,
+                    data: res.data,
+                    loading: false
                 }, function () {
                 });
             })

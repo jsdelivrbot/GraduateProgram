@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FlatList, View, StyleSheet, TouchableOpacity, ActivityIndicator} from 'react-native';
 import { ListItem, Divider } from 'react-native-elements';
+import axios from 'axios';
 
 /* Screen presenting the photos galleries of a day from a selected event */
 export default class DayScreen extends Component {
@@ -35,12 +36,11 @@ export default class DayScreen extends Component {
             loading: true
         });
 
-        return fetch('https://graduates-mindera.herokuapp.com/day/' + id)
-            .then((res) => res.json())
+        axios.get('https://graduates-mindera.herokuapp.com/day/' + id)
             .then((res) => {
                 this.setState({
-                    loading: false,
-                    data: res,
+                    data: res.data,
+                    loading: false
                 }, function(){
                 });
             })

@@ -1,12 +1,14 @@
 import React from 'react';
 import { DrawerNavigator } from 'react-navigation';
-import HomeScreen from "./HomeScreen";
+import StackNav from "./StackNav";
 import SettingsScreen from "./SettingsScreen";
 import AboutScreen from "./AboutScreen";
+import {Dimensions} from "react-native";
 
+/* Left Drawer Navigation */
 const DrawerNav = DrawerNavigator({
     Home: {
-        screen: HomeScreen
+        screen: StackNav
     },
     Settings: {
         screen: SettingsScreen
@@ -15,9 +17,9 @@ const DrawerNav = DrawerNavigator({
         screen: AboutScreen
     }
 }, {
-    //drawerBackgroundColor: 'orange',
-    drawerPosition: left,
-    drawerWidth: 200
+    initialRouteName: 'Home',
+    drawerPosition: 'left',
+    drawerWidth: Dimensions.get('window').width / 1.5
     }
 );
 
