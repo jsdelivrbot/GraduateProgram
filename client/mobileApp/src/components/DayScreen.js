@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, View, StyleSheet, TouchableOpacity, ActivityIndicator} from 'react-native';
+import { FlatList, View, StyleSheet, TouchableOpacity, ActivityIndicator, Text} from 'react-native';
 import { ListItem, Divider } from 'react-native-elements';
 import {connect} from 'react-redux';
 import {fetchDay} from '../actions/daysActions'
@@ -48,13 +48,15 @@ class DayScreen extends Component {
 
     render() {
         return (
-            //{this.state.loading && <View style={styles.indicator}><ActivityIndicator size="large" /></View>}
             <View>
+                {this.props.day.loading && <View style={styles.indicator}><ActivityIndicator size="large" /></View>}
+                {!this.props.day.loading && this.props.day.error !== null && <Text>{this.props.day.error.message}</Text>}
+                {!this.props.day.loading && this.props.day.error === null &&
                 <FlatList
                     data={this.props.day.data}
                     renderItem={this._renderItem}
                     keyExtractor={this._keyExtractor}
-                />
+                />}
             </View>
         )
     }

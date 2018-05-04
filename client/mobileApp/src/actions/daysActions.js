@@ -1,4 +1,4 @@
-import {FETCH_DAY} from './types';
+import {FETCH_DAY, FETCH_DAY_ERROR} from './types';
 import axios from 'axios';
 
 export const fetchDay = (id) => dispatch =>{
@@ -8,6 +8,7 @@ export const fetchDay = (id) => dispatch =>{
             payload: res.data
         }))
         .catch((error) => dispatch({
+            type: FETCH_DAY_ERROR,
             payload: error
         }));
 };

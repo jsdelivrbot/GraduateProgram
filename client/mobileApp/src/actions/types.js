@@ -1,3 +1,6 @@
 export const FETCH_EVENTS = 'FETCH_EVENTS';
+export const FETCH_EVENTS_ERROR = 'FETCH_EVENTS_ERROR';
 export const FETCH_DAY = 'FETCH_DAY';
+export const FETCH_DAY_ERROR = 'FETCH_DAY';
 export const FETCH_GALLERY = 'FETCH_GALLERY';
+export const FETCH_GALLERY_ERROR = 'FETCH_GALLERY';

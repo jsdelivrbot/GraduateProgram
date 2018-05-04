@@ -1,4 +1,4 @@
-import {FETCH_GALLERY} from './types';
+import {FETCH_GALLERY, FETCH_GALLERY_ERROR} from './types';
 import axios from 'axios';
 
 export const fetchGallery = (id) => dispatch =>{
@@ -8,6 +8,7 @@ export const fetchGallery = (id) => dispatch =>{
             payload: res.data
         }))
         .catch((error) => dispatch({
+            type: FETCH_GALLERY_ERROR,
             payload: error
         }));
 };

@@ -8,11 +8,24 @@ import Icons from 'react-native-vector-icons/Ionicons';
 /* Main navigation Tabs */
 const TabNav = TabNavigator({
     Events: {
-        screen: EventsTab
-
+        screen: EventsTab,
+        navigationOptions: {
+            tabBarLabel: 'Events',
+            drawerLabel: 'Home',
+            drawerIcon: ({tintColor}) => (
+                <Icons name="md-home" size={25} tintColor="tintColor" />
+            )
+        }
     },
     Vacancies: {
-        screen: VacanciesTab
+        screen: VacanciesTab,
+        navigationOptions: {
+            tabBarLabel: 'Vancancies',
+            drawerLabel: 'Home',
+            drawerIcon: ({tintColor}) => (
+                <Icons name="md-home" size={25} tintColor="tintColor" />
+            )
+        }
     }
 }, {
     animationEnabled: true,
@@ -28,7 +41,7 @@ const TabNav = TabNavigator({
             backgroundColor: 'white'
         }
     },
-    navigationOptions: {
+    navigationOptions: ({ navigation }) =>({
         title: "Meet Mindera",
         headerStyle: {
             backgroundColor: '#0145CD',
@@ -38,9 +51,9 @@ const TabNav = TabNavigator({
         },
         headerTitleStyle: {
             color: '#ffffff'
-        }
-        /*headerLeft: (
-            <TouchableOpacity style={{paddingLeft:20}} onPress={() => this.props.navigation.navigate('DrawerOpen')}>
+        },
+        headerLeft: (
+            <TouchableOpacity style={{paddingLeft:20}} onPress={() => navigation.navigate('DrawerOpen')}>
                 <Icons name="md-menu" size={30} color="#ffff" />
             </TouchableOpacity>
         ),
@@ -48,8 +61,8 @@ const TabNav = TabNavigator({
             <TouchableOpacity style={{paddingRight:20}} onPress={() => alert('search something')}>
                 <Icons name="md-search" size={30} color="#ffff" />
             </TouchableOpacity>
-        )*/
-    }
+        )
+    })
 });
 
 export default TabNav;

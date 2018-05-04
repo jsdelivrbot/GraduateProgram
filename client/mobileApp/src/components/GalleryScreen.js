@@ -41,13 +41,16 @@ class GalleryScreen extends Component {
     render() {
         return (
             <View style={{marginBottom: 20}}>
+                {this.props.gallery.loading && <View style={styles.indicator}><ActivityIndicator size="large" /></View>}
+                {!this.props.gallery.loading && this.props.gallery.error !== null && <Text>{this.props.gallery.error.message}</Text>}
+                {!this.props.gallery.loading && this.props.gallery.error === null &&
                 <FlatList
                     style={{padding: 10}}
                     numColumns={this.props.gallery.columns}
                     data={this.props.gallery.data}
                     renderItem={this._renderItem}
                     keyExtractor={this._keyExtractor}
-                />
+                />}
             </View>
         )
     }

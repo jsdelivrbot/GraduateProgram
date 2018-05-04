@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import Icons from 'react-native-vector-icons/Ionicons';
 
 /* Settings Screen */
 export default class SettingsScreen extends Component {
-    static navigationOptions = {
-        title: "Settings"
-    };
-
-    constructor(){
-        super();
-    }
-
     render(){
         return (
             <View style={styles.container}>
+                <StatusBar
+                    backgroundColor="#01308d"
+                    barStyle="light-content"
+                />
                 <Text>This is settings screen</Text>
             </View>
         )

@@ -1,4 +1,4 @@
-import {FETCH_EVENTS} from './types';
+import {FETCH_EVENTS, FETCH_EVENTS_ERROR} from './types';
 import axios from 'axios';
 
 export const fetchEvents = () => dispatch =>{
@@ -8,6 +8,7 @@ export const fetchEvents = () => dispatch =>{
             payload: res.data
         }))
         .catch((error) => dispatch({
+            type: FETCH_EVENTS_ERROR,
             payload: error
         }));
 };
