@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import {FlatList, View, Image, Text, Dimensions, ActivityIndicator, StyleSheet} from 'react-native';
-import axios from 'axios';
+import {connect} from 'react-redux';
+import {fetchGallery} from '../actions/galleriesActions'
+import {fetchDay} from "../actions/daysActions";
 
 /* Screen where the Gallery with photos is presented */
-export default class GalleryScreen extends Component {
+class GalleryScreen extends Component {
 
     static navigationOptions = ({navigation}) => {
         const {params} = navigation.state;
@@ -17,40 +19,11 @@ export default class GalleryScreen extends Component {
         }
     };
 
-    constructor() {
-        super();
-
-        this.state = {
-            data: [],
-            loading: true,
-            error: null,
-            columns: 2
-        }
-    }
-
     componentDidMount() {
-        const {params} = this.props.navigation.state;
+        const { params } = this.props.navigation.state;
         const id = params ? params.id : null;
 
-        this.setState({
-            loading: true
-        });
-
-        axios.get('https://graduates-mindera.herokuapp.com/gallery/' + id)
-            .then((res) => {
-                this.setState({
-                    data: res.data,
-                    loading: false
-                }, function () {
-                });
-            })
-            .catch((error) => {
-                this.setState({
-                    loading: false
-                });
-
-                console.log(error);
-            });
+        this.props.dispatch(fetchGallery(id));
     }
 
     _renderItem = ({item}) => (
@@ -68,11 +41,10 @@ export default class GalleryScreen extends Component {
     render() {
         return (
             <View style={{marginBottom: 20}}>
-                {this.state.loading && <View style={styles.indicator}><ActivityIndicator size="large" /></View>}
                 <FlatList
                     style={{padding: 10}}
-                    numColumns={this.state.columns}
-                    data={this.state.data}
+                    numColumns={this.props.gallery.columns}
+                    data={this.props.gallery.data}
                     renderItem={this._renderItem}
                     keyExtractor={this._keyExtractor}
                 />
@@ -88,3 +60,5 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     }
 });
+
+export default connect(store => ({gallery: store.galleries}))(GalleryScreen);

@@ -7,7 +7,7 @@ export const fetchEvents = () => dispatch =>{
             type: FETCH_EVENTS,
             payload: res.data
         }))
-        .catch((error) =>{
-
-        });
+        .catch((error) => dispatch({
+            payload: error
+        }));
 };

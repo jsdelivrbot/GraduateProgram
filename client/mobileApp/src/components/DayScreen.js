@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { FlatList, View, StyleSheet, TouchableOpacity, ActivityIndicator} from 'react-native';
 import { ListItem, Divider } from 'react-native-elements';
-import axios from 'axios';
+import {connect} from 'react-redux';
+import {fetchDay} from '../actions/daysActions'
 
 /* Screen presenting the photos galleries of a day from a selected event */
-export default class DayScreen extends Component {
+class DayScreen extends Component {
 
     static navigationOptions = ({ navigation }) => {
         const { params } = navigation.state;
@@ -18,39 +19,11 @@ export default class DayScreen extends Component {
         }
     };
 
-    constructor(){
-        super();
-
-        this.state = {
-            data: [],
-            loading: true,
-            error: null
-        }
-    }
-
     componentDidMount(){
         const { params } = this.props.navigation.state;
         const id = params ? params.id : null;
 
-        this.setState({
-            loading: true
-        });
-
-        axios.get('https://graduates-mindera.herokuapp.com/day/' + id)
-            .then((res) => {
-                this.setState({
-                    data: res.data,
-                    loading: false
-                }, function(){
-                });
-            })
-            .catch((error) =>{
-                this.setState({
-                    loading: false
-                });
-
-                console.log(error);
-            });
+        this.props.dispatch(fetchDay(id));
     }
 
     _renderItem = ({item}) => (
@@ -75,10 +48,10 @@ export default class DayScreen extends Component {
 
     render() {
         return (
+            //{this.state.loading && <View style={styles.indicator}><ActivityIndicator size="large" /></View>}
             <View>
-                {this.state.loading && <View style={styles.indicator}><ActivityIndicator size="large" /></View>}
                 <FlatList
-                    data={this.state.data}
+                    data={this.props.day.data}
                     renderItem={this._renderItem}
                     keyExtractor={this._keyExtractor}
                 />
@@ -94,3 +67,5 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     }
 });
+
+export default connect(store => ({day: store.days}))(DayScreen);

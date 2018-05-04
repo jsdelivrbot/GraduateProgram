@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { ScrollView, FlatList, View, Image, Text, StyleSheet,  ActivityIndicator, StatusBar, TouchableOpacity, Button } from 'react-native';
 import EventCardList from './EventCardList';
 import Icons from 'react-native-vector-icons/Ionicons';
-import axios from 'axios';
 import {connect} from 'react-redux';
-import {fetchEvents} from '../actions/actions'
+import {fetchEvents} from '../actions/eventsActions'
 
 /* Events Tab */
 class EventsTab extends Component {
@@ -22,39 +21,8 @@ class EventsTab extends Component {
             ),
     };
 
-    /*constructor(){
-        super();
-        this.state = {
-            data: [],
-            loading: true,
-            error: null
-        }
-    }
-
     componentDidMount(){
-        this.setState({
-            loading: true
-        });
-
-        axios.get('https://graduates-mindera.herokuapp.com/events')
-            .then((res) => {
-                this.setState({
-                    data: res.data,
-                    loading: false
-                }, function(){
-                });
-            })
-            .catch((error) =>{
-                this.setState({
-                    loading: false
-                });
-
-                console.log(error);
-            });
-    }*/
-
-    componentDidMount(){
-        this.props.fetchEvents();
+        this.props.dispatch(fetchEvents());
     }
 
     _renderItem = ({item}) => (
@@ -67,7 +35,7 @@ class EventsTab extends Component {
     _keyExtractor = (item) => item._id;
 
     render() {
-        return (
+        /*return (
             <ScrollView style={styles.wrapper}>
                 <StatusBar
                     backgroundColor="#01308d"
@@ -80,6 +48,24 @@ class EventsTab extends Component {
                 {this.state.loading && <View style={styles.indicator}><ActivityIndicator size="large" /></View>}
                 <FlatList
                     data={this.state.data}
+                    renderItem={this._renderItem}
+                    keyExtractor={this._keyExtractor}
+                />
+            </ScrollView>
+        );*/
+
+        return (
+            <ScrollView style={styles.wrapper}>
+                <StatusBar
+                    backgroundColor="#01308d"
+                    barStyle="light-content"
+                />
+                <Image
+                    source={require('../static/img/banner.png')}
+                    style={styles.banner}
+                />
+                <FlatList
+                    data={this.props.events.data}
                     renderItem={this._renderItem}
                     keyExtractor={this._keyExtractor}
                 />
@@ -111,4 +97,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(null, {fetchEvents})(EventsTab);
+export default connect(store => ({events: store.events}))(EventsTab);
