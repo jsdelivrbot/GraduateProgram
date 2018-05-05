@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {FlatList, View, Image, Text, Dimensions, ActivityIndicator, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import {fetchGallery} from '../actions/galleriesActions'
-import {fetchDay} from "../actions/daysActions";
 
 /* Screen where the Gallery with photos is presented */
 class GalleryScreen extends Component {
@@ -40,8 +39,8 @@ class GalleryScreen extends Component {
 
     render() {
         return (
-            <View style={{marginBottom: 20}}>
-                {this.props.gallery.loading && <View style={styles.indicator}><ActivityIndicator size="large" /></View>}
+            <View style={styles.container}>
+                {this.props.gallery.loading && <View style={styles.indicator}><ActivityIndicator size="large" color="#0145CD" /></View>}
                 {!this.props.gallery.loading && this.props.gallery.error !== null && <Text>{this.props.gallery.error.message}</Text>}
                 {!this.props.gallery.loading && this.props.gallery.error === null &&
                 <FlatList
@@ -57,6 +56,10 @@ class GalleryScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        marginBottom: 20
+    },
     indicator: {
         flex: 1,
         justifyContent: 'center',

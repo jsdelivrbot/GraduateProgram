@@ -30,7 +30,7 @@ class EventsTab extends Component {
                     source={require('../static/img/banner.png')}
                     style={styles.banner}
                 />
-                {this.props.events.loading && <View style={styles.indicator}><ActivityIndicator size="large" /></View>}
+                {this.props.events.loading && <View style={styles.indicator}><ActivityIndicator size="large" color="#0145CD" /></View>}
                 {!this.props.events.loading && this.props.events.error !== null && <Text>{this.props.events.error.message}</Text>}
                 {!this.props.events.loading && this.props.events.error === null &&
                 <FlatList

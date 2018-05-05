@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, View, StyleSheet, TouchableOpacity, ActivityIndicator, Text} from 'react-native';
+import { FlatList, View, StyleSheet, TouchableOpacity, ActivityIndicator, Text, Image, StatusBar} from 'react-native';
 import { ListItem, Divider } from 'react-native-elements';
 import {connect} from 'react-redux';
 import {fetchDay} from '../actions/daysActions'
@@ -46,10 +46,19 @@ class DayScreen extends Component {
 
     _keyExtractor = (item) => item._id;
 
+    /*{this.props.day.loading && <View style={styles.container}><ActivityIndicator style={styles.indicator} size="large" color="#0145CD" /></View>}
+                {!this.props.day.loading && this.props.day.error !== null && <Text>{this.props.day.error.message}</Text>}
+                {!this.props.day.loading && this.props.day.error === null &&
+                <FlatList
+                    data={this.props.day.data}
+                    renderItem={this._renderItem}
+                    keyExtractor={this._keyExtractor}
+                />}*/
+
     render() {
         return (
-            <View>
-                {this.props.day.loading && <View style={styles.indicator}><ActivityIndicator size="large" /></View>}
+            <View style={styles.container}>
+                {this.props.day.loading && <View style={styles.indicator}><ActivityIndicator size="large" color="#0145CD" /></View>}
                 {!this.props.day.loading && this.props.day.error !== null && <Text>{this.props.day.error.message}</Text>}
                 {!this.props.day.loading && this.props.day.error === null &&
                 <FlatList
@@ -63,10 +72,14 @@ class DayScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
     indicator: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        height: 80
     }
 });
 

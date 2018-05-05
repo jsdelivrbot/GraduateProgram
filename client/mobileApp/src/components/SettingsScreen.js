@@ -1,9 +1,20 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
-import Icons from 'react-native-vector-icons/Ionicons';
+import DayScreen from "./DayScreen";
+import TabNav from "./TabNav";
+import {StackNavigator} from "react-navigation";
+import GalleryScreen from "./GalleryScreen";
+import StackNav from "./StackNav";
 
 /* Settings Screen */
-export default class SettingsScreen extends Component {
+class SettingsScreen extends Component {
+
+    static navigationOptions = ({ navigation }) => {
+
+    };
+
+
+
     render(){
         return (
             <View style={styles.container}>
@@ -24,3 +35,15 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     }
 });
+
+const SettingsStackNav = StackNavigator (
+    {
+        Settings: {
+            screen: SettingsScreen
+        }
+    },
+    {
+        initialRouteName: 'Settings'
+    });
+
+export default SettingsStackNav;
