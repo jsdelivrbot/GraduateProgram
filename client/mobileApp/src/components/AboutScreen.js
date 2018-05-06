@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, StatusBar, Image, WebView, TouchableOpacity, Linking } from 'react-native';
-import {StackNavigator} from "react-navigation";
+import { StyleSheet, Text, View, StatusBar, TouchableOpacity, Linking } from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
 
 /* About Screen */
-class AboutScreen extends Component {
+export default class AboutScreen extends Component {
     static navigationOptions = ({ navigation }) => {
         return {
             title: 'About',
@@ -81,15 +80,3 @@ const styles = StyleSheet.create({
         padding: 20
     }
 });
-
-const AboutStackNav = StackNavigator (
-    {
-        About: {
-            screen: AboutScreen
-        }
-    },
-    {
-        initialRouteName: 'About'
-    });
-
-export default AboutStackNav;

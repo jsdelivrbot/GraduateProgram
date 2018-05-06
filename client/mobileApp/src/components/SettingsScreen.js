@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, StatusBar, TouchableOpacity } from 'react-native';
-import {StackNavigator} from "react-navigation";
 import Icons from 'react-native-vector-icons/Ionicons';
 
 /* Settings Screen */
-class SettingsScreen extends Component {
+export default class SettingsScreen extends Component {
     static navigationOptions = ({ navigation }) => {
         return {
             title: 'Settings',
@@ -40,15 +39,3 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     }
 });
-
-const SettingsStackNav = StackNavigator (
-    {
-        Settings: {
-            screen: SettingsScreen
-        }
-    },
-    {
-        initialRouteName: 'Settings'
-    });
-
-export default SettingsStackNav;

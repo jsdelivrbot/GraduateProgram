@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {fetchEvents} from '../actions/eventsActions'
 
 /* Events Tab */
-class EventsTab extends Component {
+export class EventsTab extends Component {
     componentDidMount(){
         this.props.dispatch(fetchEvents());
     }
