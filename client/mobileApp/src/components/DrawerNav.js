@@ -3,7 +3,7 @@ import { DrawerNavigator, DrawerItems } from 'react-navigation';
 import { ScrollView, FlatList, View, Image, Text, StyleSheet } from 'react-native';
 import StackNav from "./StackNav";
 import SettingsStackNav from "./SettingsScreen";
-import AboutScreen from "./AboutScreen";
+import AboutStackNav from "./AboutScreen";
 import {Dimensions} from "react-native";
 import Icons from 'react-native-vector-icons/Ionicons';
 
@@ -38,7 +38,7 @@ const DrawerNav = DrawerNavigator({
         }
     },
     About: {
-        screen: AboutScreen,
+        screen: AboutStackNav,
         navigationOptions: {
             title: 'About',
             drawerIcon: ({tintColor}) => (

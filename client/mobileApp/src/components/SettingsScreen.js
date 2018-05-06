@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
-import DayScreen from "./DayScreen";
-import TabNav from "./TabNav";
+import { StyleSheet, Text, View, StatusBar, TouchableOpacity } from 'react-native';
 import {StackNavigator} from "react-navigation";
-import GalleryScreen from "./GalleryScreen";
-import StackNav from "./StackNav";
+import Icons from 'react-native-vector-icons/Ionicons';
 
 /* Settings Screen */
 class SettingsScreen extends Component {
-
     static navigationOptions = ({ navigation }) => {
-
+        return {
+            title: 'Settings',
+            headerStyle: {
+                backgroundColor: '#0145CD'
+            },
+            headerTintColor: 'white',
+            headerLeft: (
+                <TouchableOpacity style={{paddingLeft:20}} onPress={() => navigation.navigate('Home')}>
+                    <Icons name="md-arrow-back" size={25} color="#ffff" />
+                </TouchableOpacity>
+            )
+        }
     };
-
-
 
     render(){
         return (
