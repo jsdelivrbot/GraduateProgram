@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import { TabNavigator } from 'react-navigation';
 import EventsTab from "./EventsTab";
 import VacanciesTab from "./VacanciesTab";
-import Icons from 'react-native-vector-icons/Ionicons';
+import {Icon} from 'native-base';
 
 /* Main navigation Tabs */
 const TabNav = TabNavigator({
@@ -13,7 +13,7 @@ const TabNav = TabNavigator({
             tabBarLabel: 'Events',
             drawerLabel: 'Home',
             drawerIcon: ({tintColor}) => (
-                <Icons name="md-home" size={25} tintColor="tintColor" />
+                <Icon name="home" style={{fontSize:25}} />
             )
         }
     },
@@ -23,7 +23,7 @@ const TabNav = TabNavigator({
             tabBarLabel: 'Vancancies',
             drawerLabel: 'Home',
             drawerIcon: ({tintColor}) => (
-                <Icons name="md-home" size={25} tintColor="tintColor" />
+                <Icon name="home" style={{fontSize:25}} />
             )
         }
     }
@@ -50,16 +50,16 @@ const TabNav = TabNavigator({
             borderBottomColor: '#01308d',
         },
         headerTitleStyle: {
-            color: '#ffffff'
+            color: 'white'
         },
         headerLeft: (
             <TouchableOpacity style={{paddingLeft:20}} onPress={() => navigation.navigate('DrawerOpen')}>
-                <Icons name="md-menu" size={25} color="#ffff" />
+                <Icon name="menu" style={{fontSize:25, color:'white'}} />
             </TouchableOpacity>
         ),
         headerRight: (
             <TouchableOpacity style={{paddingRight:20}} onPress={() => alert('search something')}>
-                <Icons name="md-search" size={25} color="#ffff" />
+                <Icon name="search" style={{fontSize:25, color:'white'}} />
             </TouchableOpacity>
         )
     })

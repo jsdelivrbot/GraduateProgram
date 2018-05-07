@@ -1,24 +1,9 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, StatusBar, TouchableOpacity, Linking } from 'react-native';
-import Icons from 'react-native-vector-icons/Ionicons';
+import { Container, Content, Header, Title, Body, Left, Icon} from 'native-base';
 
 /* About Screen */
 export default class AboutScreen extends Component {
-    static navigationOptions = ({ navigation }) => {
-        return {
-            title: 'About',
-            headerStyle: {
-                backgroundColor: '#0145CD'
-            },
-            headerTintColor: 'white',
-            headerLeft: (
-                <TouchableOpacity style={{paddingLeft:20}} onPress={() => navigation.navigate('Home')}>
-                    <Icons name="md-arrow-back" size={25} color="#ffff" />
-                </TouchableOpacity>
-            )
-        }
-    };
-
     handleClickLinkedin = () => {
         Linking.canOpenURL('https://www.linkedin.com/in/manuelggomes/').then(supported => {
             if (supported) {
@@ -41,32 +26,45 @@ export default class AboutScreen extends Component {
 
     render() {
         return (
-            <View style={styles.container}>
-                <StatusBar
-                    backgroundColor="#01308d"
-                    barStyle="light-content"
-                />
-                <Text style={styles.author}>Manuel Gomes</Text>
-                <View style={styles.social}>
-                    <TouchableOpacity style={styles.socialButton} onPress={this.handleClickLinkedin}>
-                        <Icons name="logo-linkedin" size={60} color="#494949" />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.socialButton} onPress={this.handleClickGitHub}>
-                        <Icons name="logo-github" size={60} color="#494949" />
-                    </TouchableOpacity>
-                </View>
-
-            </View>
+            <Container>
+                <Header style={styles.headerContainer}>
+                    <Left>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')}>
+                            <Icon name="arrow-back" style={{fontSize:25, color:'white', paddingLeft: 10}} />
+                        </TouchableOpacity>
+                    </Left>
+                    <Body>
+                    <Title style={{left: -35, fontWeight: 'bold'}}>
+                        About
+                    </Title>
+                    </Body>
+                </Header>
+                <Content contentContainerStyle={{flex: 1, justifyContent: 'center',
+                    alignItems: 'center'}}>
+                    <View>
+                        <StatusBar
+                            backgroundColor="#01308d"
+                            barStyle="light-content"
+                        />
+                        <Text style={styles.author}>Manuel Gomes</Text>
+                        <View style={styles.social}>
+                            <TouchableOpacity style={styles.socialButton} onPress={this.handleClickLinkedin}>
+                                <Icon name="logo-linkedin" style={styles.socialIcon} />
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.socialButton} onPress={this.handleClickGitHub}>
+                                <Icon name="logo-github" style={styles.socialIcon} />
+                            </TouchableOpacity>
+                        </View>
+                    </View>
+                </Content>
+            </Container>
         );
     }
 }
 
 const styles = StyleSheet.create({
-
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+    headerContainer: {
+        backgroundColor: '#0145CD'
     },
     author: {
       fontSize: 30,
@@ -78,5 +76,9 @@ const styles = StyleSheet.create({
     },
     socialButton: {
         padding: 20
+    },
+    socialIcon: {
+        fontSize: 60,
+        color: '#494949'
     }
 });

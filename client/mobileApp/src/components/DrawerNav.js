@@ -1,11 +1,11 @@
 import React from 'react';
 import { DrawerNavigator, DrawerItems } from 'react-navigation';
-import { ScrollView, FlatList, View, Image, Text, StyleSheet } from 'react-native';
+import { ScrollView, View, Image, Text, StyleSheet } from 'react-native';
 import StackNav from "./StackNav";
-import SettingsScreenStackNav from "./SettingsScreenStackNav";
-import AboutScreenStackNav from "./AboutScreenStackNav";
+import SettingsScreen from "./SettingsScreen";
+import AboutScreen from "./AboutScreen";
 import {Dimensions} from "react-native";
-import Icons from 'react-native-vector-icons/Ionicons';
+import {Icon} from 'native-base';
 
 /* Drawer content, with header included */
 const DrawerContentComponent = (props) => (
@@ -29,20 +29,20 @@ const DrawerNav = DrawerNavigator({
         screen: StackNav
     },
     Settings: {
-        screen: SettingsScreenStackNav,
+        screen: SettingsScreen,
         navigationOptions: {
             title: 'Settings',
             drawerIcon: ({tintColor}) => (
-                <Icons name="md-settings" size={25} tintColor="tintColor" />
+                <Icon name="settings" size={25} tintColor="tintColor" />
             )
         }
     },
     About: {
-        screen: AboutScreenStackNav,
+        screen: AboutScreen,
         navigationOptions: {
             title: 'About',
             drawerIcon: ({tintColor}) => (
-                <Icons name="md-help-circle" size={25} tintColor="tintColor" />
+                <Icon name="help-circle" size={25} tintColor="tintColor" />
             )
         }
     }
