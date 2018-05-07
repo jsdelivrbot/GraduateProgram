@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { ScrollView, FlatList, View, Image, Text, StyleSheet,  ActivityIndicator, StatusBar } from 'react-native';
+import { ScrollView, FlatList, View, Image, Text, StyleSheet,  ActivityIndicator, StatusBar, Dimensions } from 'react-native';
 import EventCardList from './EventCardList';
 import {connect} from 'react-redux';
 import {fetchEvents} from '../actions/eventsActions'
+
+import FitImage from 'react-native-fit-image';
 
 /* Events Tab */
 export class EventsTab extends Component {
@@ -26,10 +28,15 @@ export class EventsTab extends Component {
                     backgroundColor="#01308d"
                     barStyle="light-content"
                 />
-                <Image
+                <FitImage
+                    indicator={false}
+                    indicatorColor="white"
+                    indicatorSize="large"
+                    originalHeight={854}
+                    originalWidth={1675}
                     source={require('../static/img/banner.png')}
-                    style={styles.banner}
                 />
+
                 {this.props.events.loading && <View style={styles.indicator}><ActivityIndicator size="large" color="#0145CD" /></View>}
                 {!this.props.events.loading && this.props.events.error !== null && <Text>{this.props.events.error.message}</Text>}
                 {!this.props.events.loading && this.props.events.error === null &&
@@ -44,10 +51,6 @@ export class EventsTab extends Component {
 }
 
 const styles = StyleSheet.create({
-    banner: {
-        height:180,
-        width:'100%'
-    },
     wrapper: {
         flex: 1,
         marginBottom: 20
