@@ -46,15 +46,6 @@ class DayScreen extends Component {
 
     _keyExtractor = (item) => item._id;
 
-    /*{this.props.day.loading && <View style={styles.container}><ActivityIndicator style={styles.indicator} size="large" color="#0145CD" /></View>}
-                {!this.props.day.loading && this.props.day.error !== null && <Text>{this.props.day.error.message}</Text>}
-                {!this.props.day.loading && this.props.day.error === null &&
-                <FlatList
-                    data={this.props.day.data}
-                    renderItem={this._renderItem}
-                    keyExtractor={this._keyExtractor}
-                />}*/
-
     render() {
         return (
             <View style={styles.container}>

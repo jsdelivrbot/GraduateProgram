@@ -4,7 +4,16 @@ exports[`EventsTab  component renders correctly 1`] = `
 ShallowWrapper {
   "length": 1,
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <Connect(EventsTab) />,
+  Symbol(enzyme.__unrendered__): <EventsTab
+    dispatch={[Function]}
+    events={
+      Object {
+        "data": Array [],
+        "error": null,
+        "loading": false,
+      }
+    }
+  />,
   Symbol(enzyme.__renderer__): Object {
     "batchedUpdates": [Function],
     "getNode": [Function],
@@ -17,12 +26,77 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "class",
     "props": Object {
-      "dispatch": [Function],
-      "events": undefined,
+      "children": Array [
+        <StatusBar
+          animated={false}
+          backgroundColor="#01308d"
+          barStyle="light-content"
+          showHideTransition="fade"
+        />,
+        false,
+        false,
+        <FlatList
+          data={Array []}
+          disableVirtualization={false}
+          horizontal={false}
+          initialNumToRender={10}
+          keyExtractor={[Function]}
+          maxToRenderPerBatch={10}
+          numColumns={1}
+          onEndReachedThreshold={2}
+          renderItem={[Function]}
+          scrollEventThrottle={50}
+          updateCellsBatchingPeriod={50}
+          windowSize={21}
+        />,
+      ],
+      "style": Object {
+        "flex": 1,
+        "marginBottom": 20,
+      },
     },
     "ref": null,
-    "rendered": null,
-    "type": [Function],
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "animated": false,
+          "backgroundColor": "#01308d",
+          "barStyle": "light-content",
+          "showHideTransition": "fade",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+      false,
+      false,
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {
+          "data": Array [],
+          "disableVirtualization": false,
+          "horizontal": false,
+          "initialNumToRender": 10,
+          "keyExtractor": [Function],
+          "maxToRenderPerBatch": 10,
+          "numColumns": 1,
+          "onEndReachedThreshold": 2,
+          "renderItem": [Function],
+          "scrollEventThrottle": 50,
+          "updateCellsBatchingPeriod": 50,
+          "windowSize": 21,
+        },
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": [MockFunction],
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -30,12 +104,77 @@ ShallowWrapper {
       "key": undefined,
       "nodeType": "class",
       "props": Object {
-        "dispatch": [Function],
-        "events": undefined,
+        "children": Array [
+          <StatusBar
+            animated={false}
+            backgroundColor="#01308d"
+            barStyle="light-content"
+            showHideTransition="fade"
+          />,
+          false,
+          false,
+          <FlatList
+            data={Array []}
+            disableVirtualization={false}
+            horizontal={false}
+            initialNumToRender={10}
+            keyExtractor={[Function]}
+            maxToRenderPerBatch={10}
+            numColumns={1}
+            onEndReachedThreshold={2}
+            renderItem={[Function]}
+            scrollEventThrottle={50}
+            updateCellsBatchingPeriod={50}
+            windowSize={21}
+          />,
+        ],
+        "style": Object {
+          "flex": 1,
+          "marginBottom": 20,
+        },
       },
       "ref": null,
-      "rendered": null,
-      "type": [Function],
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "animated": false,
+            "backgroundColor": "#01308d",
+            "barStyle": "light-content",
+            "showHideTransition": "fade",
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+        false,
+        false,
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {
+            "data": Array [],
+            "disableVirtualization": false,
+            "horizontal": false,
+            "initialNumToRender": 10,
+            "keyExtractor": [Function],
+            "maxToRenderPerBatch": 10,
+            "numColumns": 1,
+            "onEndReachedThreshold": 2,
+            "renderItem": [Function],
+            "scrollEventThrottle": 50,
+            "updateCellsBatchingPeriod": 50,
+            "windowSize": 21,
+          },
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": [MockFunction],
     },
   ],
   Symbol(enzyme.__options__): Object {

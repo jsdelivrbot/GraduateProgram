@@ -2,17 +2,20 @@ import React from 'react';
 import { shallow, configure } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
 import DayScreen from '../src/components/DayScreen';
 
 configure({ adapter: new Adapter() });
 
-const middlewares = [];
-const mockStore = configureStore(middlewares);
+const middleware = [thunk];
+const mockStore = configureStore(middleware);
 
 const initialState = {
-    data: [],
-    loading: false,
-    error: null
+    day: {
+        data: [],
+        loading: false,
+        error: null
+    }
 };
 
 describe('DayScreen  component', () => {
