@@ -1,7 +1,7 @@
 # Mindera: Graduate Program
 The application was developed using [React-Native](https://facebook.github.io/react-native/), [Redux](https://redux.js.org/) and [Axios](https://github.com/axios/axios).
-An API was also created to mock that to the client, using [Node.js](https://nodejs.org/en/), [Express](https://expressjs.com/) and [Mongoose](http://mongoosejs.com/) to connect to a MongoDB database created for the project.
-The API and all needed resources are already in a staging server, hosted by [Heroku](https://graduates-mindera.herokuapp.com/events)
+An API was also created to mock data to the client, using [Node.js](https://nodejs.org/en/), [Express](https://expressjs.com/) and [Mongoose](http://mongoosejs.com/) to connect to a MongoDB database created for the project.
+The API and all needed resources are already available through a staging server, hosted in [Heroku](https://graduates-mindera.herokuapp.com/events).
 
 ## Usage
 ### Installation
@@ -27,8 +27,7 @@ The API and all needed resources are already in a staging server, hosted by [Her
    Hit the Run button
 
 ### Testing the application
-
-  For testing the application, use the following command:
+For testing the application, unit and end-to-end tests were created [Jest](https://facebook.github.io/jest/) and [Enzyme](http://airbnb.io/enzyme/). To run them, use the following command:
   
      npm test  
 
