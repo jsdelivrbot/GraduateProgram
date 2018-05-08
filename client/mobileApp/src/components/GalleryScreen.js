@@ -18,17 +18,29 @@ class GalleryScreen extends Component {
         }
     };
 
+    constructor(){
+        super();
+        this.state = {
+            width: Dimensions.get('window').width
+        }
+    }
+
     componentDidMount() {
         const { params } = this.props.navigation.state;
         const id = params ? params.id : null;
 
         this.props.dispatch(fetchGallery(id));
+
+        Dimensions.addEventListener('change', (e) => {
+            let width = Dimensions.get('window').width;
+            this.setState({width});
+        })
     }
 
     _renderItem = ({item}) => (
-        <View style={{margin: 10}}>
+        <View style={{flex: 1, margin: 10}}>
             <Image
-                style={{width: Dimensions.get('window').width / 2 - 30, height: 170, marginBottom: 4}}
+                style={{width: this.state.width / 2 - 30, height: 1.2 * (this.state.width / 2 - 30), marginBottom: 4}}
                 source={{uri: item.image}}
             />
             <Text>{item.description}</Text>
