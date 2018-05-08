@@ -29,5 +29,5 @@ The API and all needed resources are already available through a staging server,
 ### Testing the application
 For testing the application, unit and end-to-end tests were created using [Jest](https://facebook.github.io/jest/) and [Enzyme](http://airbnb.io/enzyme/). To run them, use the following command:
   
-     npm test  
+    npm test  
 
