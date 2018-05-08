@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, FlatList, View, Image, Text, StyleSheet,  ActivityIndicator, StatusBar, Dimensions } from 'react-native';
+import { ScrollView, FlatList, View, Text, StyleSheet,  ActivityIndicator, StatusBar } from 'react-native';
 import EventCardList from './EventCardList';
 import {connect} from 'react-redux';
 import {fetchEvents} from '../actions/eventsActions'

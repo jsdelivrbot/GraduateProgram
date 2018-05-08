@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`eventsReducer FETCH_EVENTS 1`] = `
+Object {
+  "data": Array [],
+  "error": null,
+  "loading": true,
+}
+`;
+
+exports[`eventsReducer FETCH_EVENTS_ERROR 1`] = `
+Object {
+  "data": undefined,
+  "error": null,
+  "loading": false,
+}
+`;

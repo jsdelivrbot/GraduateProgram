@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`daysReducer FETCH_DAY 1`] = `
+Object {
+  "data": Array [],
+  "error": null,
+  "loading": true,
+}
+`;
+
+exports[`daysReducer FETCH_DAY_ERROR 1`] = `
+Object {
+  "data": Array [],
+  "error": null,
+  "loading": true,
+}
+`;

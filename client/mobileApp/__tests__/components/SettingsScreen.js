@@ -1,22 +1,21 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import VacanciesTab from '../src/components/VacanciesTab';
+import SettingsScreen from '../../src/components/SettingsScreen';
 import Adapter from 'enzyme-adapter-react-16';
-import {Text} from "react-native";
 import {configure, shallow} from "enzyme/build/index";
 
 configure({ adapter: new Adapter() });
 
-describe('VacanciesTab component', () => {
+describe('SettingsScreen component', () => {
     it('renders correctly', () => {
-        const tree = renderer.create(<VacanciesTab />).toJSON();
+        const tree = renderer.create(<SettingsScreen />).toJSON();
         expect(tree).toMatchSnapshot();
     });
-    it('render a text description', () => {
+    it('renders a text element', () => {
         const wrapper = shallow(
-            <VacanciesTab />
+            <SettingsScreen />
         );
 
-        expect(render.find('Text').length).toBe(1);
+        expect(wrapper.find('Text').length).toBe(1);
     });
 });
